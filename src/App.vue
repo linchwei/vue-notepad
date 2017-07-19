@@ -1,55 +1,44 @@
 <template>
-  <div id="app">
-    <note-header></note-header>
+  <div id="app" :class="colorClass">
+    <note-header @tools="changePages"></note-header>
     <note-main></note-main>
     <note-footer></note-footer>
+     <note-tool :is-show="tools" @hideTool="hideTool"></note-tool> 
   </div>
 </template>
 
 <script>
+  import noteHeader from './components/header.vue'
+  import noteMain from './components/main.vue'
+  import noteFooter from './components/footer.vue'
+  import noteTool from './components/tool.vue'
+
   export default {
     name: 'app',
-    components: {
-      'note-header': {
-        template: `
-          <header class="header">
-            <h1>记事本</h1>
-          </header>
-        `
-      },
-      'note-main': {
-        template: `
-          <div class="main">
-            <div class="search-group">
-              <input placeholder="待办事项">
-              <a class="btn">提交</a>
-            </div>
-            <div class="info">
-              <div class="group">
-                <a href="">未完成</a>
-              </div>
-              <div class="group">
-                <a href="">已完成</a>
-              </div>
-              <div class="group">
-                <a href="">已取消</a>
-              </div>
-            </div>
-          </div>
-        `
-      },
-      'note-footer': {
-        template: `
-           <footer class="footer">
-            <span>&copy; Levy notepad</span>
-          </footer>
-        `
+    data () {
+      return {
+        colorClass: 'blue',
+        tools: false
       }
+    },
+    methods: {
+      changePages () {
+        this.tools = true
+      },
+      hideTool () {
+        this.tools = false
+      }
+    },
+    components: {
+      noteHeader,
+      noteMain,
+      noteFooter,
+      noteTool
     }
   }
 </script>
 
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss">
   /* $blue_color: #00b0f0; */
   *,
   *:before,
@@ -70,78 +59,64 @@
     height: 100%;
     margin: 0 auto;
   }
-  .header {
-    z-index: 99;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 1.8rem;
-    line-height: 1.8rem;
+  .blue .header {
     background: #00b0f0;
-    color: #fff;
-    text-align: center
   }
-   .header h1 {
-     font-weight: normal;
-     font-size: 24px;
-   }
-  .footer {
-    z-index: 99;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1.2rem;
-    line-height: 1.2rem;
-    color: #666;
-    font-size: 14px;
-    background: #f7f7f7;
-    text-align: center;
-  }
-  .main {
-    padding: 1.8rem 0 1.2rem;
-  }
-  .main .search-group {
-    display: flex;
-    align-items: center;
-    padding: 0 0.2rem;
-    margin-top: 0.6rem;
-  }
-  .main .search-group input {
-    flex: 1;
-    height: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 0.1rem;
-    text-indent: 0.3rem;
-    margin-right: 0.2rem;
-  }
-  .main .search-group .btn {
-    padding: 0 0.6rem;
-    height: 1rem;
-    line-height: 1rem;
-    font-size: 16px;
+  .blue .event-btn {
     background: #00b0f0;
-    color: #fff;
-    border-radius: 0.1rem;
-    cursor: pointer;
   }
-  .main .info {
-    padding: 0 0.2rem;
-    margin-top: 0.6rem;
-  }
-  .main .info .group {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #fff;
-  }
-  .main .group a {
-    position: relative;
-    flex: 1;
-    font-size: 16px;
+  .blue .group-btn {
     background: #00b0f0;
-    color: #fff;
-    padding: 0.2rem 0.4rem;
-    text-decoration: none;
+  }
+  .blue .tools-btn {
+    background: #00b0f0;
+  }
+  .green .header {
+    background: #00d1b2;
+  }
+  .green .event-btn {
+    background: #00d1b2;
+  }
+  .green .group-btn {
+    background: #00d1b2;
+  }
+  .green .tools-btn {
+    background: #00d1b2;
+  }
+  .orange .header {
+    background: #f4b976;
+  }
+  .orange .event-btn {
+    background: #f4b976;
+  }
+  .orange .group-btn {
+    background: #f4b976;
+  }
+  .orange .tools-btn {
+    background: #f4b976;
+  }
+  .pink .header {
+    background: #f39894;
+  }
+  .pink .event-btn {
+    background: #f39894;
+  }
+  .pink .group-btn {
+    background: #f39894;
+  }
+  .pink .tools-btn {
+    background: #f39894;
+  }
+  .cyan .header {
+    background: #26b6be;
+  }
+  .cyan .event-btn {
+    background: #26b6be;
+  }
+  .cyan .group-btn {
+    background: #26b6be;
+  }
+  .cyan .tools-btn {
+    background: #26b6be;
   }
 </style>
