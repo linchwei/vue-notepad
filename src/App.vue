@@ -57,6 +57,7 @@
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
   }
   #app {
     position: relative;
@@ -70,11 +71,16 @@
   .blue .event-btn {
     background: #00b0f0;
   }
-  .blue .group-btn {
+  .blue .nav-btn {
     background: #00b0f0;
   }
   .blue .tools-btn {
     background: #00b0f0;
+  }
+  .blue .succ-list,
+  .blue .padd-list,
+  .blue .cann-list {
+    border: solid 1px #00b0f0;
   }
   .green .header {
     background: #00d1b2;
@@ -82,11 +88,16 @@
   .green .event-btn {
     background: #00d1b2;
   }
-  .green .group-btn {
+  .green .nav-btn {
     background: #00d1b2;
   }
   .green .tools-btn {
     background: #00d1b2;
+  }
+  .green .succ-list,
+  .green .padd-list,
+  .green .cann-list {
+    border: solid 1px #00d1b2;
   }
   .orange .header {
     background: #f4b976;
@@ -94,11 +105,16 @@
   .orange .event-btn {
     background: #f4b976;
   }
-  .orange .group-btn {
+  .orange .nav-btn {
     background: #f4b976;
   }
   .orange .tools-btn {
     background: #f4b976;
+  }
+  .orange .succ-list,
+  .orange .padd-list,
+  .orange .cann-list {
+    border: solid 1px #f4b976;
   }
   .pink .header {
     background: #f39894;
@@ -106,11 +122,16 @@
   .pink .event-btn {
     background: #f39894;
   }
-  .pink .group-btn {
+  .pink .nav-btn {
     background: #f39894;
   }
   .pink .tools-btn {
     background: #f39894;
+  }
+  .pink .succ-list,
+  .pink .padd-list,
+  .pink .cann-list {
+    border: solid 1px #f39894;
   }
   .cyan .header {
     background: #26b6be;
@@ -118,10 +139,15 @@
   .cyan .event-btn {
     background: #26b6be;
   }
-  .cyan .group-btn {
+  .cyan .nav-btn {
     background: #26b6be;
   }
   .cyan .tools-btn {
     background: #26b6be;
+  }
+  .cyan .succ-list,
+  .cyan .padd-list,
+  .cyan .cann-list {
+    border: solid 1px #26b6be;
   }
 </style>

@@ -23,5 +23,6 @@
     font-size: 14px;
     background: #f7f7f7;
     text-align: center;
+    border-top: 1px solid #ddd;
   }
 </style>

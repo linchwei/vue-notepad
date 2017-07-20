@@ -1,86 +1,98 @@
 <template>
   <div class="main">
-    <div class="search-group">
-      <input placeholder="待办事项">
-      <a class="btn event-btn">提交</a>
-    </div>
-    <div class="info">
-      <div class="group">
-        <a class="close group-btn">未完成</a>
-      </div>
-      <div class="group">
-        <a class="close group-btn">已完成</a>
-      </div>
-      <div class="group">
-        <a class="close group-btn">已取消</a>
-      </div>
-    </div>
+    <nav class="nav">
+      <a class="nav-btn" :class="{ active: nav.add }" @click="changePage('add')">新增</a>
+      <a class="nav-btn" :class="{ active: nav.succ }" @click="changePage('succ')">已完成</a>
+      <a class="nav-btn" :class="{ active: nav.padd }" @click="changePage('padd')">未完成</a>
+      <a class="nav-btn" :class="{ active: nav.cann }"@click="changePage('cann')">已取消</a>
+    </nav>
+    <add-event v-if="nav.add === true"></add-event>
+    <succ-event v-if="nav.succ === true"></succ-event>
+    <padd-event v-if="nav.padd === true"></padd-event>
+    <cann-event v-if="nav.cann === true"></cann-event>
   </div>
 </template>
 
 <script>
+  import addEvent from './main/addEvent.vue'
+  import succEvent from './main/succEvent.vue'
+  import paddEvent from './main/paddEvent.vue'
+  import cannEvent from './main/cannEvent.vue'
+
   export default {
-    name: 'main'
+    name: 'main',
+    data () {
+      return {
+        nav: {
+          add: true,
+          succ: false,
+          padd: false,
+          cann: false
+        }
+      }
+    },
+    methods: {
+      changePage (type) {
+        switch (type) {
+          case 'add':
+            this.nav.add = true
+            this.nav.succ = false
+            this.nav.padd = false
+            this.nav.cann = false
+            break
+          case 'succ':
+            this.nav.add = false
+            this.nav.succ = true
+            this.nav.padd = false
+            this.nav.cann = false
+            break
+          case 'padd':
+            this.nav.add = false
+            this.nav.succ = false
+            this.nav.padd = true
+            this.nav.cann = false
+            break
+          case 'cann':
+            this.nav.add = false
+            this.nav.succ = false
+            this.nav.padd = false
+            this.nav.cann = true
+            break
+        }
+      }
+    },
+    components: {
+      addEvent,
+      succEvent,
+      paddEvent,
+      cannEvent
+    }
   }
 </script>
 
 <style lang="scss" scoped>
   .main {
     padding: 1.8rem 0 1.2rem;
+    max-height: 100%;
+    overflow-y: auto;
   }
-  .main .search-group {
+  .nav {
     display: flex;
-    align-items: center;
-    padding: 0 0.2rem;
-    margin-top: 0.6rem;
+    justify-content: space-between;
+    padding: 0.2rem 0;
+    background: #f7f7f7;
+    border-bottom: 1px solid #ddd;
   }
-  .main .search-group input {
-    flex: 1;
-    height: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 0.1rem;
-    text-indent: 0.3rem;
-    margin-right: 0.2rem;
-  }
-  .main .search-group .btn {
-    padding: 0 0.6rem;
-    height: 1rem;
-    line-height: 1rem;
-    font-size: 16px;
-    color: #fff;
-    border-radius: 0.1rem;
-    cursor: pointer;
-  }
-  .main .info {
-    padding: 0 0.2rem;
-    margin-top: 0.6rem;
-  }
-  .main .info .group {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #fff;
-  }
-  .main .group a {
-    position: relative;
+  .nav-btn {
+    padding: 0.2rem;
+    margin: 0 0.2rem;
     flex: 1;
     font-size: 16px;
+    text-align: center;
     color: #fff;
-    padding: 0.3rem 0.4rem;
-    text-decoration: none;
+    border-radius: 0.1rem;
   }
-  .main .group a:before {
-    position: absolute;
-    right: 0.3rem;
-    top: 50%;
-    width: 0.3rem;
-    height: 0.3rem;
-    border-top: 2px solid #fff;
-    border-right: 2px solid #fff;
-    transform: translateY(-50%) rotate(135deg);
-    transition: transform .3s;   
-    content: '';
-   }
-  .main .group a.close:before {
-    transform: translateY(-50%) rotate(45deg);
+  .nav-btn.active {
+    background: #007fff;
   }
 </style>
