@@ -6,13 +6,13 @@
     </div>
     <div class="info">
       <div class="group">
-        <a class="close group-btn" href="">未完成</a>
+        <a class="close group-btn">未完成</a>
       </div>
       <div class="group">
-        <a class="close group-btn" href="">已完成</a>
+        <a class="close group-btn">已完成</a>
       </div>
       <div class="group">
-        <a class="close group-btn" href="">已取消</a>
+        <a class="close group-btn">已取消</a>
       </div>
     </div>
   </div>

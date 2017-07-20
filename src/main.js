@@ -7,6 +7,10 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
+  data: {
+    PropTheme: new Vue(),
+    store: []
+  },
   template: '<App/>',
   components: { App }
 }).$mount('#app')

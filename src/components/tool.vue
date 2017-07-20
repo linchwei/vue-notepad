@@ -1,7 +1,7 @@
 <template>
-  <div class="side-tools" :class="[{'tools-show': show}, themeType]" @click="hideTools">
+  <div class="side-tools" :class="{'tools-show': show}" @click="hideTools">
     <tool-nav :is-nav="isNav" @opentheme="openTheme"></tool-nav> 
-    <tool-theme :is-theme="isTheme" @hidetheme="hideTheme" :changetheme.sync="themeType"></tool-theme> 
+    <tool-theme :is-theme="isTheme" @hidetheme="hideTheme"></tool-theme> 
   </div>
 </template>
 
@@ -15,8 +15,7 @@
     data () {
       return {
         isNav: true,
-        isTheme: false,
-        themeType: 'blue'
+        isTheme: false
       }
     },
     computed: {

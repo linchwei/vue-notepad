@@ -40,7 +40,8 @@
         this.$emit('hidetheme')
       },
       switchTheme (type) {
-        this.$emit('update:changetheme', type)
+        this.$emit('hidetheme')
+        this.$root.PropTheme.$emit('changetheme', type)
       }
     }
   }

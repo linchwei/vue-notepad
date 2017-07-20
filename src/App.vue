@@ -34,6 +34,11 @@
       noteMain,
       noteFooter,
       noteTool
+    },
+    created () {
+      this.$root.PropTheme.$on('changetheme', (type) => {
+        this.colorClass = type
+      })
     }
   }
 </script>
