@@ -3,7 +3,7 @@
     <note-header @tools="changePages"></note-header>
     <note-main></note-main>
     <note-footer></note-footer>
-     <note-tool :is-show="tools" @hideTool="hideTool"></note-tool> 
+    <note-tool :is-show="tools" @hideTool="hideTool"></note-tool> 
   </div>
 </template>
 

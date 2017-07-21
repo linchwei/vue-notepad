@@ -1,76 +1,32 @@
 <template>
   <div class="padd-event">
-    <div class="padd-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">需完成时长30天（还剩 <span> 27 </span> 天）</p>
-      <a class="btn">编辑</a>
-    </div>
-    <div class="padd-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">需完成时长30天（还剩 <span> 27 </span> 天）</p>
-      <a class="btn">编辑</a>
-    </div>
-    <div class="padd-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">需完成时长30天（还剩 <span> 27 </span> 天）</p>
-      <a class="btn">编辑</a>
-    </div>
-    <div class="padd-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">需完成时长30天（还剩 <span> 27 </span> 天）</p>
-      <a class="btn">编辑</a>
-    </div>
-    <div class="padd-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">需完成时长30天（还剩 <span> 27 </span> 天）</p>
-      <a class="btn">编辑</a>
-    </div>
-    <div class="padd-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">需完成时长30天（还剩 <span> 27 </span> 天）</p>
-      <a class="btn">编辑</a>
-    </div>
-    <div class="padd-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">需完成时长30天（还剩 <span> 27 </span> 天）</p>
-      <a class="btn">编辑</a>
-    </div>
-    <div class="padd-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">需完成时长30天（还剩 <span> 27 </span> 天）</p>
-      <a class="btn">编辑</a>
-    </div>
-    <div class="padd-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">需完成时长30天（还剩 <span> 27 </span> 天）</p>
-      <a class="btn">编辑</a>
-    </div>
-    <div class="padd-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">需完成时长30天（还剩 <span> 27 </span> 天）</p>
-      <a class="btn">编辑</a>
-    </div>
-    <div class="padd-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">需完成时长30天（还剩 <span> 27 </span> 天）</p>
-      <a class="btn">编辑</a>
+    <div class="padd-list" v-for="item in eventPadd">
+      <h3 class="title"> {{ item.title }} </h3>
+      <p class="desc"> {{ item.desc }} </p>
+      <p class="tips">需完成时长 {{ item.time }} 天（还剩 <span> 27 </span> 天）</p>
+      <!-- <a class="btn">编辑</a> -->
     </div>
   </div>
 </template>
 
 <script>
-  
+  export default {
+    name: 'PaddEvent',
+    computed: {
+      eventPadd () {
+        let eventArr = JSON.parse(localStorage.getItem('levyNotepad')) || []
+        let paddArr = []
+
+        if (eventArr.length > 0) {
+          eventArr.forEach(function (val, index) {
+            if (val.flag === 'padd') paddArr.push(val)
+          })
+
+          return paddArr
+        }
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

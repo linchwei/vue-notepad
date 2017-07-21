@@ -2,25 +2,47 @@
   <div class="add-event">
     <div class="group">
       <label for="">标题：</label>
-      <input type="text">
+      <input v-model.lazy="title">
     </div>
     <div class="group">
       <label for="">描述：</label>
-      <textarea></textarea>
+      <textarea v-model.lazy="desc"></textarea>
     </div>
     <div class="group">
       <label for="">完成时长：</label>
-      <input type="text">
+      <input v-model.lazy.number="time" type="number">
     </div>
     <div class="group">
-      <button class="event-btn">提交</button>
+      <button class="event-btn" @click="add">提交</button>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'addEvent'
+    name: 'AddEvent',
+    data () {
+      return {
+        title: '',
+        desc: '',
+        time: '',
+        flag: 'padd'
+      }
+    },
+    methods: {
+      add () {
+        let eventArr = JSON.parse(localStorage.getItem('levyNotepad')) || []
+        eventArr.push({
+          title: this.title,
+          desc: this.desc,
+          time: this.time,
+          flag: this.flag,
+          id: Date.parse(new Date())
+        })
+        localStorage.setItem('levyNotepad', JSON.stringify(eventArr))
+        console.log(eventArr)
+      }
+    }
   }
 </script>
 
@@ -47,9 +69,12 @@
     height: 1rem;
     border: 1px solid #ddd;
     border-radius: 0.1rem;
+    text-indent: 0.3rem;
   }
   .group textarea {
     height: 3rem;
+    padding: 0.3rem;
+    text-indent: 0;
   }
   .group button {
     color: #fff;

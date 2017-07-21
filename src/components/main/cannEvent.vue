@@ -1,65 +1,51 @@
 <template>
   <div class="cann-event">
-    <div class="cann-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <a class="btn">恢复</a>
-    </div>
-    <div class="cann-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <a class="btn">恢复</a>
-    </div>
-    <div class="cann-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <a class="btn">恢复</a>
-    </div>
-    <div class="cann-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <a class="btn">恢复</a>
-    </div>
-    <div class="cann-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <a class="btn">恢复</a>
-    </div>
-    <div class="cann-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <a class="btn">恢复</a>
-    </div>
-    <div class="cann-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <a class="btn">恢复</a>
-    </div>
-    <div class="cann-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <a class="btn">恢复</a>
-    </div>
-    <div class="cann-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <a class="btn">恢复</a>
-    </div>
-    <div class="cann-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <a class="btn">恢复</a>
-    </div>
-    <div class="cann-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <a class="btn">恢复</a>
+    <div class="cann-list" v-for="item in eventCann">
+      <h3 class="title"> {{ item.title }} </h3>
+      <p class="desc"> {{ item.desc }} </p>
+      <a class="btn" @click="renew(item.id)">恢复</a>
     </div>
   </div>
 </template>
 
 <script>
-  
+  export default {
+    name: 'CannEvent',
+    data () {
+      return {
+        store: null
+      }
+    },
+    computed: {
+      eventCann: {
+        get () {
+          let eventArr = this.store || JSON.parse(localStorage.getItem('levyNotepad')) || []
+          let paddArr = []
+
+          if (eventArr.length > 0) {
+            eventArr.forEach(function (val, index) {
+              if (val.flag === 'cann') paddArr.push(val)
+            })
+
+            return paddArr
+          }
+        },
+        set (val) {
+          this.store = val
+        }
+      }
+    },
+    methods: {
+      renew (id) {
+        let eventArr = JSON.parse(localStorage.getItem('levyNotepad')) || []
+        eventArr.forEach(function (val) {
+          if (val.id === id) val.flag = 'padd'
+        })
+        this.eventCann = eventArr
+        localStorage.setItem('levyNotepad', JSON.stringify(eventArr))
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

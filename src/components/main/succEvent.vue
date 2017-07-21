@@ -1,65 +1,31 @@
 <template>
   <div class="succ-event">
-    <div class="succ-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">完成了，奖励一下自己！</p>
-    </div>
-    <div class="succ-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">完成了，奖励一下自己！</p>
-    </div>
-    <div class="succ-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">完成了，奖励一下自己！</p>
-    </div>
-    <div class="succ-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">完成了，奖励一下自己！</p>
-    </div>
-    <div class="succ-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">完成了，奖励一下自己！</p>
-    </div>
-    <div class="succ-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">完成了，奖励一下自己！</p>
-    </div>
-    <div class="succ-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">完成了，奖励一下自己！</p>
-    </div>
-    <div class="succ-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">完成了，奖励一下自己！</p>
-    </div>
-    <div class="succ-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">完成了，奖励一下自己！</p>
-    </div>
-    <div class="succ-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
-      <p class="tips">完成了，奖励一下自己！</p>
-    </div>
-    <div class="succ-list">
-      <h3 class="title">levy</h3>
-      <p class="desc">levy要好好努力，好好的1123变得更好，才能选择更好的那个她！才能给她承诺！！！</p>
+    <div class="succ-list" v-for="item in eventSucc">
+      <h3 class="title"> {{ item.title }} </h3>
+      <p class="desc"> {{ item.desc }} </p>
       <p class="tips">完成了，奖励一下自己！</p>
     </div>
   </div>
 </template>
 
 <script>
-  
+  export default {
+    name: 'SuccEvent',
+    computed: {
+      eventSucc () {
+        let eventArr = JSON.parse(localStorage.getItem('levyNotepad')) || []
+        let paddArr = []
+
+        if (eventArr.length > 0) {
+          eventArr.forEach(function (val, index) {
+            if (val.flag === 'succ') paddArr.push(val)
+          })
+
+          return paddArr
+        }
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
