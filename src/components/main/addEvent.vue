@@ -40,7 +40,7 @@
           id: Date.parse(new Date())
         })
         localStorage.setItem('levyNotepad', JSON.stringify(eventArr))
-        console.log(eventArr)
+        location.href = '#/padd'
       }
     }
   }

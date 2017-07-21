@@ -3,8 +3,8 @@
     <div class="padd-list" v-for="item in eventPadd">
       <h3 class="title"> {{ item.title }} </h3>
       <p class="desc"> {{ item.desc }} </p>
-      <p class="tips">需完成时长 {{ item.time }} 天（还剩 <span> 27 </span> 天）</p>
-      <!-- <a class="btn">编辑</a> -->
+      <p class="tips">需完成时长 {{ item.time }} 天（还剩 <span> {{ item.time | filterTime(item.id) }} </span> 天）</p>
+       <a class="btn" @click="cannel(item.id)">取消</a> 
     </div>
   </div>
 </template>
@@ -12,18 +12,47 @@
 <script>
   export default {
     name: 'PaddEvent',
+    data () {
+      return {
+        store: null
+      }
+    },
     computed: {
-      eventPadd () {
-        let eventArr = JSON.parse(localStorage.getItem('levyNotepad')) || []
-        let paddArr = []
+      eventPadd: {
+        get () {
+          let eventArr = this.store || JSON.parse(localStorage.getItem('levyNotepad')) || []
+          let paddArr = []
 
-        if (eventArr.length > 0) {
-          eventArr.forEach(function (val, index) {
-            if (val.flag === 'padd') paddArr.push(val)
-          })
+          if (eventArr.length > 0) {
+            eventArr.forEach(function (val, index) {
+              if (val.flag === 'padd') paddArr.push(val)
+            })
 
-          return paddArr
+            return paddArr
+          }
+        },
+        set (val) {
+          this.store = val
         }
+      }
+    },
+    filters: {
+      filterTime (val, time) {
+        let date = (Date.parse(new Date()) - time) / (24 * 60 * 60 * 1000)
+        console.log(Date.parse(new Date()))
+        console.log(time)
+        if (date > 1) return val - Math.floor(date)
+        return val
+      }
+    },
+    methods: {
+      cannel (id) {
+        let eventArr = JSON.parse(localStorage.getItem('levyNotepad')) || []
+        eventArr.forEach(function (val) {
+          if (val.id === id) val.flag = 'cann'
+        })
+        this.eventPadd = eventArr
+        localStorage.setItem('levyNotepad', JSON.stringify(eventArr))
       }
     }
   }

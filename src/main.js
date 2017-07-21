@@ -17,14 +17,14 @@ new Vue({
         desc: 'mock data desc 1',
         time: '10',
         flag: 'succ',
-        id: 10
+        id: Date.parse(new Date()) - 100000000
       },
       {
         title: 'mock data 2',
         desc: 'mock data desc 2',
         time: '10',
         flag: 'cann',
-        id: 20
+        id: Date.parse(new Date()) - 200000000
       },
       'mock'
     ]

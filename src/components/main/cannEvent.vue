@@ -20,14 +20,14 @@
       eventCann: {
         get () {
           let eventArr = this.store || JSON.parse(localStorage.getItem('levyNotepad')) || []
-          let paddArr = []
+          let cannArr = []
 
           if (eventArr.length > 0) {
             eventArr.forEach(function (val, index) {
-              if (val.flag === 'cann') paddArr.push(val)
+              if (val.flag === 'cann') cannArr.push(val)
             })
 
-            return paddArr
+            return cannArr
           }
         },
         set (val) {
