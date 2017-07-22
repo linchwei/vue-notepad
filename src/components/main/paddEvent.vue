@@ -19,8 +19,7 @@
       },
       eventPadd () {
         let paddArr = []
-        let storeArr = this.getStore
-        storeArr.forEach(function (val, index) {
+        this.getStore.forEach(function (val, index) {
           if (val.flag === 'padd') paddArr.push(val)
         })
         return paddArr

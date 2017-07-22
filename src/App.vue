@@ -54,8 +54,7 @@
       })
       this.$root.PropStore.$on('store', (store) => {
         this.store = JSON.parse(store)
-        localStorage.removeItem('levyNotepad')
-        localStorage.setItem('levyNotepad', JSON.stringify(store))
+        localStorage.setItem('levyNotepad', store)
       })
     }
   }

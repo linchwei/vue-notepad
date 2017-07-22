@@ -18,8 +18,7 @@
       },
       eventCann () {
         let cannArr = []
-        let storeArr = this.getStore
-        storeArr.forEach(function (val, index) {
+        this.getStore.forEach(function (val, index) {
           if (val.flag === 'cann') cannArr.push(val)
         })
         return cannArr

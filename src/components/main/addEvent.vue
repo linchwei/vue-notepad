@@ -37,16 +37,14 @@
     },
     methods: {
       add () {
-        let storeArr = this.getStore
-        console.log(storeArr)
-        storeArr.push({
+        this.getStore.push({
           title: this.title,
           desc: this.desc,
           time: this.time,
           flag: this.flag,
           id: Date.parse(new Date())
         })
-        this.$root.PropStore.$emit('store', JSON.stringify(storeArr))
+        this.$root.PropStore.$emit('store', JSON.stringify(this.getStore))
         location.href = '#/padd'
       }
     }

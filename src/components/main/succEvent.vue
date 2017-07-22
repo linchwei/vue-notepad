@@ -19,8 +19,7 @@
       },
       eventSucc () {
         let succArr = []
-        let storeArr = this.getStore
-        storeArr.forEach(function (val, index) {
+        this.getStore.forEach(function (val, index) {
           if (val.flag === 'succ') succArr.push(val)
         })
         return succArr
