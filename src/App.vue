@@ -1,7 +1,7 @@
 <template>
   <div id="app" :class="colorClass">
     <note-header @tools="changePages"></note-header>
-    <note-main></note-main>
+    <note-main :store="store"></note-main>
     <note-footer></note-footer>
     <note-tool :is-show="tools" @hideTool="hideTool"></note-tool> 
   </div>
@@ -18,7 +18,20 @@
     data () {
       return {
         colorClass: 'blue',
-        tools: false
+        tools: false,
+        storeData: null
+      }
+    },
+    computed: {
+      store: {
+        get () {
+          let storeArr = this.storeData || JSON.parse(localStorage.getItem('levyNotepad')) || []
+
+          return JSON.stringify(storeArr)
+        },
+        set (val) {
+          this.storeData = val
+        }
       }
     },
     methods: {
@@ -38,6 +51,11 @@
     created () {
       this.$root.PropTheme.$on('changetheme', (type) => {
         this.colorClass = type
+      })
+      this.$root.PropStore.$on('store', (store) => {
+        this.store = JSON.parse(store)
+        localStorage.removeItem('levyNotepad')
+        localStorage.setItem('levyNotepad', JSON.stringify(store))
       })
     }
   }

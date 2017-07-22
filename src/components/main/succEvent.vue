@@ -11,18 +11,19 @@
 <script>
   export default {
     name: 'SuccEvent',
+    props: ['store'],
     computed: {
+      getStore () {
+        console.log(this.store)
+        return JSON.parse(this.store) || []
+      },
       eventSucc () {
-        let eventArr = JSON.parse(localStorage.getItem('levyNotepad')) || []
-        let paddArr = []
-
-        if (eventArr.length > 0) {
-          eventArr.forEach(function (val, index) {
-            if (val.flag === 'succ') paddArr.push(val)
-          })
-
-          return paddArr
-        }
+        let succArr = []
+        let storeArr = this.getStore
+        storeArr.forEach(function (val, index) {
+          if (val.flag === 'succ') succArr.push(val)
+        })
+        return succArr
       }
     }
   }

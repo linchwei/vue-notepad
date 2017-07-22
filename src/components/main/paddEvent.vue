@@ -1,4 +1,4 @@
-<template>
+<template :store="store">
   <div class="padd-event">
     <div class="padd-list" v-for="item in eventPadd">
       <h3 class="title"> {{ item.title }} </h3>
@@ -12,47 +12,33 @@
 <script>
   export default {
     name: 'PaddEvent',
-    data () {
-      return {
-        store: null
-      }
-    },
+    props: ['store'],
     computed: {
-      eventPadd: {
-        get () {
-          let eventArr = this.store || JSON.parse(localStorage.getItem('levyNotepad')) || []
-          let paddArr = []
-
-          if (eventArr.length > 0) {
-            eventArr.forEach(function (val, index) {
-              if (val.flag === 'padd') paddArr.push(val)
-            })
-
-            return paddArr
-          }
-        },
-        set (val) {
-          this.store = val
-        }
+      getStore () {
+        return JSON.parse(this.store) || []
+      },
+      eventPadd () {
+        let paddArr = []
+        let storeArr = this.getStore
+        storeArr.forEach(function (val, index) {
+          if (val.flag === 'padd') paddArr.push(val)
+        })
+        return paddArr
       }
     },
     filters: {
       filterTime (val, time) {
         let date = (Date.parse(new Date()) - time) / (24 * 60 * 60 * 1000)
-        console.log(Date.parse(new Date()))
-        console.log(time)
         if (date > 1) return val - Math.floor(date)
         return val
       }
     },
     methods: {
       cannel (id) {
-        let eventArr = JSON.parse(localStorage.getItem('levyNotepad')) || []
-        eventArr.forEach(function (val) {
+        this.getStore.forEach(function (val) {
           if (val.id === id) val.flag = 'cann'
         })
-        this.eventPadd = eventArr
-        localStorage.setItem('levyNotepad', JSON.stringify(eventArr))
+        this.$root.PropStore.$emit('store', JSON.stringify(this.getStore))
       }
     }
   }

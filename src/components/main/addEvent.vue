@@ -21,6 +21,7 @@
 <script>
   export default {
     name: 'AddEvent',
+    props: ['store'],
     data () {
       return {
         title: '',
@@ -29,17 +30,23 @@
         flag: 'padd'
       }
     },
+    computed: {
+      getStore () {
+        return JSON.parse(this.store) || []
+      }
+    },
     methods: {
       add () {
-        let eventArr = JSON.parse(localStorage.getItem('levyNotepad')) || []
-        eventArr.push({
+        let storeArr = this.getStore
+        console.log(storeArr)
+        storeArr.push({
           title: this.title,
           desc: this.desc,
           time: this.time,
           flag: this.flag,
           id: Date.parse(new Date())
         })
-        localStorage.setItem('levyNotepad', JSON.stringify(eventArr))
+        this.$root.PropStore.$emit('store', JSON.stringify(storeArr))
         location.href = '#/padd'
       }
     }

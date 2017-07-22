@@ -11,38 +11,26 @@
 <script>
   export default {
     name: 'CannEvent',
-    data () {
-      return {
-        store: null
-      }
-    },
+    props: ['store'],
     computed: {
-      eventCann: {
-        get () {
-          let eventArr = this.store || JSON.parse(localStorage.getItem('levyNotepad')) || []
-          let cannArr = []
-
-          if (eventArr.length > 0) {
-            eventArr.forEach(function (val, index) {
-              if (val.flag === 'cann') cannArr.push(val)
-            })
-
-            return cannArr
-          }
-        },
-        set (val) {
-          this.store = val
-        }
+      getStore () {
+        return JSON.parse(this.store) || []
+      },
+      eventCann () {
+        let cannArr = []
+        let storeArr = this.getStore
+        storeArr.forEach(function (val, index) {
+          if (val.flag === 'cann') cannArr.push(val)
+        })
+        return cannArr
       }
     },
     methods: {
       renew (id) {
-        let eventArr = JSON.parse(localStorage.getItem('levyNotepad')) || []
-        eventArr.forEach(function (val) {
+        this.getStore.forEach(function (val) {
           if (val.id === id) val.flag = 'padd'
         })
-        this.eventCann = eventArr
-        localStorage.setItem('levyNotepad', JSON.stringify(eventArr))
+        this.$root.PropStore.$emit('store', JSON.stringify(this.getStore))
       }
     }
   }

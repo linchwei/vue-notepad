@@ -6,12 +6,15 @@
       <router-link class="nav-btn" to="/padd">未完成</router-link>
       <router-link class="nav-btn" to="/cann">已取消</router-link>
     </nav>
-    <router-view></router-view>
+    <router-view :store="store"></router-view>
   </div>
 </template>
 
 <script>
-  export default {}
+  export default {
+    name: 'main',
+    props: ['store']
+  }
 </script>
 
 <style lang="scss" scoped>
