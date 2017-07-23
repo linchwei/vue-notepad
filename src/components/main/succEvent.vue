@@ -1,6 +1,6 @@
 <template>
   <div class="succ-event">
-    <div class="succ-list" v-for="item in eventSucc">
+    <div class="succ-list" v-for="item in eventSucc" :key="item.id">
       <h3 class="title"> {{ item.title }} </h3>
       <p class="desc"> {{ item.desc }} </p>
       <p class="tips">完成了，奖励一下自己！</p>
@@ -14,7 +14,6 @@
     props: ['store'],
     computed: {
       getStore () {
-        console.log(this.store)
         return JSON.parse(this.store) || []
       },
       eventSucc () {

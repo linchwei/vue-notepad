@@ -1,21 +1,24 @@
 <template>
   <div class="side-tools" :class="{'tools-show': show}" @click="hideTools">
-    <tool-nav :is-nav="isNav" @opentheme="openTheme"></tool-nav> 
+    <tool-nav :is-nav="isNav" :store="store" @opentheme="openTheme" @exportStore="exportStore"></tool-nav> 
     <tool-theme :is-theme="isTheme" @hidetheme="hideTheme"></tool-theme> 
+    <tool-layer :is-layer="isLayer" @hideLayer="hideLayer"></tool-layer>
   </div>
 </template>
 
 <script>
   import toolNav from './tools/nav.vue'
   import toolTheme from './tools/theme.vue'
+  import toolLayer from './tools/layer.vue'
 
   export default {
     name: 'tool',
-    props: ['isShow'],
+    props: ['isShow', 'store'],
     data () {
       return {
         isNav: true,
-        isTheme: false
+        isTheme: false,
+        isLayer: false
       }
     },
     computed: {
@@ -27,18 +30,31 @@
       hideTools () {
         this.$emit('hideTool')
       },
+      hideLayer () {
+        this.isTheme = false
+        this.isNav = true
+        this.isLayer = false
+      },
       openTheme () {
         this.isTheme = true
         this.isNav = false
+        this.isLayer = false
       },
       hideTheme () {
         this.isTheme = false
         this.isNav = true
+        this.isLayer = false
+      },
+      exportStore () {
+        this.isTheme = false
+        this.isNav = false
+        this.isLayer = true
       }
     },
     components: {
       toolNav,
-      toolTheme
+      toolTheme,
+      toolLayer
     }
   }
 </script>

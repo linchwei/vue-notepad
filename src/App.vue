@@ -3,7 +3,7 @@
     <note-header @tools="changePages"></note-header>
     <note-main :store="store"></note-main>
     <note-footer></note-footer>
-    <note-tool :is-show="tools" @hideTool="hideTool"></note-tool> 
+    <note-tool :is-show="tools" :store="store" @hideTool="hideTool"></note-tool> 
   </div>
 </template>
 
@@ -40,6 +40,11 @@
       },
       hideTool () {
         this.tools = false
+      },
+      removeStore () {
+        localStorage.removeItem('levyNotepad')
+        this.store = null
+        location.href = '#/'
       }
     },
     components: {
@@ -55,6 +60,27 @@
       this.$root.PropStore.$on('store', (store) => {
         this.store = JSON.parse(store)
         localStorage.setItem('levyNotepad', store)
+      })
+      this.$root.PropStore.$on('uploadStore', (store) => {
+        let storeArr = JSON.parse(store)
+        let storeAll = JSON.parse(this.store)
+        if (Array.isArray(storeArr)) {
+          storeAll.forEach(function (val) {
+            let storeItem = val
+            storeArr.forEach(function (value, key, arr) {
+              if (storeItem.id === value.id) {
+                arr.splice(arr[key], 1)
+              }
+            })
+          })
+          this.store = [...storeAll, ...storeArr]
+          localStorage.setItem('levyNotepad', this.store)
+        } else {
+          alert('导入的数据格式不对!')
+        }
+      })
+      this.$root.PropStore.$on('removeStore', () => {
+        this.removeStore()
       })
     }
   }
@@ -99,6 +125,12 @@
   .blue .cann-list {
     border: solid 1px #00b0f0;
   }
+  .blue .layer {
+    border: solid 1px #00b0f0;
+  }
+  .blue .layer-btn {
+    background: #00b0f0;
+  }
   .green .header {
     background: #00d1b2;
   }
@@ -115,6 +147,12 @@
   .green .padd-list,
   .green .cann-list {
     border: solid 1px #00d1b2;
+  }
+  .green .layer {
+    border: solid 1px #00d1b2;
+  }
+  .green .layer-btn {
+    background: #00b0f0;
   }
   .orange .header {
     background: #f4b976;
@@ -133,6 +171,12 @@
   .orange .cann-list {
     border: solid 1px #f4b976;
   }
+  .orange .layer {
+    border: solid 1px #f4b976;
+  }
+  .orange .layer-btn {
+    background: #f4b976;
+  }
   .pink .header {
     background: #f39894;
   }
@@ -150,6 +194,12 @@
   .pink .cann-list {
     border: solid 1px #f39894;
   }
+  .pink .layer {
+    border: solid 1px #f39894;
+  }
+  .pink .layer-btn {
+    background: #f39894;
+  }
   .cyan .header {
     background: #26b6be;
   }
@@ -166,5 +216,11 @@
   .cyan .padd-list,
   .cyan .cann-list {
     border: solid 1px #26b6be;
+  }
+  .cyan .layer {
+    border: solid 1px #26b6be;
+  }
+  .cyan .layer-btn {
+    background: #26b6be;
   }
 </style>
