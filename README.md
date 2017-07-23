@@ -1,3 +1,7 @@
+# 基于vue2.0 + localStorage + vue-router的简易记事本
+
+> 本文采用vue2.0 + vue-router + localStorage + sass + webpack，实现一个本地存储的记事本。兼容PC端和移动端。
+
 # vue-notepad
 
 > A vue notepad project!
