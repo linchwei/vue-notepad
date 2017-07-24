@@ -57,46 +57,60 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, .5);
-  }
-  .theme-title {
-    padding: 0.6rem;
-    color: #fff;
-    text-align: center;
-    font-size: 18px;
-  }
-  .theme-list .theme-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 3.6rem;
-    font-size: 16px;
-    color: #333;
-    background: #fff;
-    padding: 0.2rem 0.3rem;
-    border: 1px solid #bbb;
-    border-radius: 0.1rem;
-    margin: 0 auto 0.6rem;
-    text-decoration: none;
-  }
-  .theme-list .theme-btn span:first-child {
-    width: 0.6rem;
-    height: 0.6rem;
-    margin-right: 0.1rem;
-  }
-  .theme-btn:nth-child(1) span:first-child {
-    background: #00b0f0;
-  }
-  .theme-btn:nth-child(2) span:first-child {
-    background: #00d1b2;
-  }
-  .theme-btn:nth-child(3) span:first-child {
-    background: #f4b976;
-  }
-  .theme-btn:nth-child(4) span:first-child {
-    background: #f39894;
-  }
-  .theme-btn:nth-child(5) span:first-child {
-    background: #26b6be;
+    .theme-title {
+      padding: 0.6rem;
+      color: #fff;
+      text-align: center;
+      font-size: 18px;
+    }
+    .theme-list {
+      .theme-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 3.6rem;
+        font-size: 16px;
+        color: #333;
+        background: #fff;
+        padding: 0.2rem 0.3rem;
+        border: 1px solid #bbb;
+        border-radius: 0.1rem;
+        margin: 0 auto 0.6rem;
+        text-decoration: none;
+        span {
+          &:first-child {
+            width: 0.6rem;
+            height: 0.6rem;
+            margin-right: 0.1rem;
+          }
+        }
+        &:nth-child(1) {
+          span:first-child {
+            background: #00b0f0;
+          }
+        }
+        &:nth-child(2) {
+          span:first-child {
+            background: #00d1b2;
+          }
+        }
+        &:nth-child(3) {
+          span:first-child {
+            background: #f4b976;
+          }
+        }
+        &:nth-child(4) {
+          span:first-child {
+            background: #f39894;
+          }
+        }
+        &:nth-child(5) {
+          span:first-child {
+            background: #26b6be;
+          }
+        }
+      }
+    }
   }
   .show-theme {
     display: block;

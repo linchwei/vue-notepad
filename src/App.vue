@@ -87,7 +87,8 @@
 </script>
 
 <style lang="scss">
-  /* $blue_color: #00b0f0; */
+  @import "./commons/css/theme";
+  
   *,
   *:before,
   *:after {
@@ -107,120 +108,5 @@
     width: 10rem;
     height: 100%;
     margin: 0 auto;
-  }
-  .blue .header {
-    background: #00b0f0;
-  }
-  .blue .event-btn {
-    background: #00b0f0;
-  }
-  .blue .nav-btn {
-    background: #00b0f0;
-  }
-  .blue .tools-btn {
-    background: #00b0f0;
-  }
-  .blue .succ-list,
-  .blue .padd-list,
-  .blue .cann-list {
-    border: solid 1px #00b0f0;
-  }
-  .blue .layer {
-    border: solid 1px #00b0f0;
-  }
-  .blue .layer-btn {
-    background: #00b0f0;
-  }
-  .green .header {
-    background: #00d1b2;
-  }
-  .green .event-btn {
-    background: #00d1b2;
-  }
-  .green .nav-btn {
-    background: #00d1b2;
-  }
-  .green .tools-btn {
-    background: #00d1b2;
-  }
-  .green .succ-list,
-  .green .padd-list,
-  .green .cann-list {
-    border: solid 1px #00d1b2;
-  }
-  .green .layer {
-    border: solid 1px #00d1b2;
-  }
-  .green .layer-btn {
-    background: #00b0f0;
-  }
-  .orange .header {
-    background: #f4b976;
-  }
-  .orange .event-btn {
-    background: #f4b976;
-  }
-  .orange .nav-btn {
-    background: #f4b976;
-  }
-  .orange .tools-btn {
-    background: #f4b976;
-  }
-  .orange .succ-list,
-  .orange .padd-list,
-  .orange .cann-list {
-    border: solid 1px #f4b976;
-  }
-  .orange .layer {
-    border: solid 1px #f4b976;
-  }
-  .orange .layer-btn {
-    background: #f4b976;
-  }
-  .pink .header {
-    background: #f39894;
-  }
-  .pink .event-btn {
-    background: #f39894;
-  }
-  .pink .nav-btn {
-    background: #f39894;
-  }
-  .pink .tools-btn {
-    background: #f39894;
-  }
-  .pink .succ-list,
-  .pink .padd-list,
-  .pink .cann-list {
-    border: solid 1px #f39894;
-  }
-  .pink .layer {
-    border: solid 1px #f39894;
-  }
-  .pink .layer-btn {
-    background: #f39894;
-  }
-  .cyan .header {
-    background: #26b6be;
-  }
-  .cyan .event-btn {
-    background: #26b6be;
-  }
-  .cyan .nav-btn {
-    background: #26b6be;
-  }
-  .cyan .tools-btn {
-    background: #26b6be;
-  }
-  .cyan .succ-list,
-  .cyan .padd-list,
-  .cyan .cann-list {
-    border: solid 1px #26b6be;
-  }
-  .cyan .layer {
-    border: solid 1px #26b6be;
-  }
-  .cyan .layer-btn {
-    background: #26b6be;
   }
 </style>

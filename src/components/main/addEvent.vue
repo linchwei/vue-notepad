@@ -13,7 +13,7 @@
       <input v-model.lazy.number="time" type="number">
     </div>
     <div class="group">
-      <button class="event-btn" @click="add">提交</button>
+      <button class="event-btn bg-color" @click="add">提交</button>
     </div>
   </div>
 </template>
@@ -54,37 +54,37 @@
 <style lang="scss" scoped>
   .add-event {
     padding-top: 0.4rem;
-  }
-  .group {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 0 0.4rem 0.4rem 0.4rem; 
-  }
-  .group label {
-    width: 90%;
-    margin-bottom: 0.1rem;
-    font-size: 16px;
-    color: #666;
-  }
-  .group input,
-  .group textarea,
-  .group button {
-    width: 90%;
-    height: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 0.1rem;
-    text-indent: 0.3rem;
-  }
-  .group textarea {
-    height: 3rem;
-    padding: 0.3rem;
-    text-indent: 0;
-  }
-  .group button {
-    color: #fff;
-    font-size: 16px;
-    border: none;
-    line-height: 1rem;
+    .group {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0 0.4rem 0.4rem 0.4rem;
+      label {
+        width: 90%;
+        margin-bottom: 0.1rem;
+        font-size: 16px;
+        color: #666;
+      }
+      input,
+      textarea,
+      button {
+        width: 90%;
+        height: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 0.1rem;
+        text-indent: 0.3rem;
+      }
+      textarea {
+        height: 3rem;
+        padding: 0.3rem;
+        text-indent: 0;
+      }
+      button {
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        line-height: 1rem;
+      }
+    }
   }
 </style>

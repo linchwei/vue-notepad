@@ -2,16 +2,16 @@
   <div class="side-nav" :class="{'show-nav': showNav}">
     <ul class="tools-sidebar">
       <li>
-        <button class="tools-btn" @click.stop.prevent="openTheme">切换主题</button>
+        <button class="tools-btn bg-color" @click.stop.prevent="openTheme">切换主题</button>
       </li>
       <li>
-        <button class="tools-btn" @click="downloadStore('notePad.json')">下载数据</button>
+        <button class="tools-btn bg-color" @click="downloadStore('notePad.json')">下载数据</button>
       </li>
       <li>
-        <button class="tools-btn" @click.stop.prevent="exportStore">导入数据</button>
+        <button class="tools-btn bg-color" @click.stop.prevent="exportStore">导入数据</button>
       </li>
       <li>
-        <button class="tools-btn" @click="removeStore">清空数据</button>
+        <button class="tools-btn bg-color" @click="removeStore">清空数据</button>
       </li>
     </ul>
   </div> 
@@ -61,6 +61,7 @@
       align-items: center;
       margin-top: 3rem;
       li {
+        list-style: none;
         width: 100%;
         padding: 0.4rem;
         text-align: center;

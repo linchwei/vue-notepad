@@ -1,25 +1,60 @@
-# 基于vue2.0 + localStorage + vue-router的简易记事本
+# 前言
+学习vue也有一段时间了，在网上也搜过vue的实战项目源码，看得也是一知半解。无意中发现某人写了一个记事本，于是就捣鼓着自己也实现一个，算是给入门vue的实战。
+此项目足够简单，只有几个页面（其实完全可以不用引用vue-router，只是这也是学习的一部分，就加了进来），涉及的功能有换肤，添加事件，显示事件的三个页面，可下载、可导入、可清除数据等。
 
-> 本文采用vue2.0 + vue-router + localStorage + sass + webpack，实现一个本地存储的记事本。兼容PC端和移动端。
+# 技术栈 
+vue2 + localStorage + vue-router + webpack + ES6 + sass + flex
 
-# vue-notepad
 
-> A vue notepad project!
-
-## Build Setup
+# 项目运行
 
 ``` bash
-# install dependencies
+
+git clone https://github.com/linchwei/vue-notepad.git
+
+cd vue-notepad
+
 npm install
 
-# serve with hot reload at localhost:8080
+
 npm run dev
 
-# build for production with minification
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# 目录结构
+<pre>
+|—— README.md
+|—— config        // server config
+|—— build         // webpack config
+|—— dist          // 生成静态文件目录
+|—— package.json  // 包含项目信息依赖
+|—— static        // 
+|—— src
+    |—— assets    //
+    |—— commons   // css、js
+    |—— components
+        |—— main
+            |—— addEvent.vue
+            |—— cannEvent.vue
+            |—— paddEvent.vue
+            |—— succEvent.vue
+        |—— tools
+            |—— layer.vue
+            |—— nav.vue
+            |—— theme.vue
+        |—— footer.vue
+        |—— header.vue
+        |—— main.vue
+        |—— tool.vue
+    |—— router
+        |—— index.js
+    |—— App.vue
+    |—— main.js
+</pre>
+
+# 结语
+本人还是一个vue菜鸟，现在所在公司也并非使用这些较新的技术开发项目（没错，万年jq，~_~）。但还是希望追赶大前端的脚步。
+
+### 微信：linchwei (希望能交到同行很多很多的朋友)

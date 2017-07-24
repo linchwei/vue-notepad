@@ -1,6 +1,6 @@
 <template>
   <div class="layer-pop" :class="{'show-layer': isLayer}">
-    <div class="layer" @click.stop>
+    <div class="layer border-color" @click.stop>
       <input type="file" accept="*.josn" @change.stop="exportStore">
       <p>只允许上传一定格式的json文件</p>
       <p>
@@ -18,7 +18,7 @@
       </p>
       <p v-if="exSucc">数据读取成功，是否确定导入？</p>
       <p v-if="exErr">上传失败，只允许notepad.json文件</p>
-      <button class="layer-btn" @click="uploadStore">导入</button>
+      <button class="layer-btn bg-color" @click="uploadStore">导入</button>
     </div>
   </div>
 </template>
@@ -71,33 +71,33 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
-  }
-  .layer {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 90%;
-    padding: 0.4rem;
-    background: #f7f7f7;
-    border-radius: 0.2rem;
-  }
-  .layer input {
-    width: 100%;
-  }
-  .layer p {
-    width: 100%;
-    margin-top: 0.1rem;
-  }
-  .layer .layer-btn {
-    margin-top: 0.4rem;
-    padding: 0.2rem 0.4rem;
-    border: 0;
-    border-radius: 0.2rem;
-    color: #fff;
+    .layer {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 90%;
+      padding: 0.4rem;
+      background: #f7f7f7;
+      border-radius: 0.2rem;
+      input {
+        width: 100%;
+      }
+      p {
+        width: 100%;
+        margin-top: 0.1rem;
+      }
+      .layer-btn {
+        margin-top: 0.4rem;
+        padding: 0.2rem 0.4rem;
+        border: 0;
+        border-radius: 0.2rem;
+        color: #fff;
+      }
+    }
   }
   .show-layer {
     display: block;

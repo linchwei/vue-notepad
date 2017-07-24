@@ -1,6 +1,6 @@
 <template>
   <div class="cann-event">
-    <div class="cann-list" v-for="item in eventCann">
+    <div class="cann-list border-color" v-for="item in eventCann" :key="item.id">
       <h3 class="title"> {{ item.title }} </h3>
       <p class="desc"> {{ item.desc }} </p>
       <a class="btn" @click="renew(item.id)">恢复</a>
@@ -38,31 +38,31 @@
 <style lang="scss" scoped>
   .cann-event { 
     margin: 0.4rem;
-  }
-  .cann-list {
-    position: relative;
-    background: #f7f7f7;
-    border-radius: 0.2rem;
-    padding: 0.4rem;
-    margin-bottom: 0.4rem;
-  }
-  .cann-event .title {
-    text-decoration: line-through;
-    font-size: 18px;
-    font-weight: normal;
-    color: #000;
-    margin-bottom: 0.4rem;
-  }
-  .cann-event .desc {
-    text-decoration: line-through;
-    line-height: 1.6;
-    margin-bottom: 0.4rem;
-  }
-  .cann-event .btn {
-    position: absolute;
-    right: 0.4rem;
-    bottom: 0.4rem;
-    color: #007fff;
-    font-size: 16px;
+    .cann-list {
+      position: relative;
+      background: #f7f7f7;
+      border-radius: 0.2rem;
+      padding: 0.4rem;
+      margin-bottom: 0.4rem;
+      .title {
+        text-decoration: line-through;
+        font-size: 18px;
+        font-weight: normal;
+        color: #000;
+        margin-bottom: 0.4rem;
+      }
+      .desc {
+        text-decoration: line-through;
+        line-height: 1.6;
+        margin-bottom: 0.4rem;
+      }
+      .btn {
+        position: absolute;
+        right: 0.4rem;
+        bottom: 0.4rem;
+        color: #007fff;
+        font-size: 16px;
+      }
+    }
   }
 </style>
