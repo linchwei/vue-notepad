@@ -1,5 +1,5 @@
 <template>
-  <div class="layer-pop" :class="{'show-layer': isLayer}">
+  <div class="layer-pop" :class="{'show-layer': isLayer}" @click="hideLayer">
     <div class="layer border-color" @click.stop>
       <input type="file" accept="*.josn" @change.stop="exportStore">
       <p>只允许上传一定格式的json文件</p>
@@ -55,6 +55,9 @@
         this.$emit('hideLayer')
         this.$root.PropStore.$emit('uploadStore', this.store)
         alert('数据导入成功')
+      },
+      hideLayer () {
+        this.$emit('hideLayer')
       }
     }
   }
